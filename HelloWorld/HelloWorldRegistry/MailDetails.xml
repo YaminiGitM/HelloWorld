@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localEntry key="MailDetails" xmlns="http://ws.apache.org/ns/synapse">
+    <MailDetails xmlns="">
+        <Mail>
+            <subject>Attachment PDF</subject>
+            <fromEmail>yamini.y@massiltech.com</fromEmail>
+            <toEmail>yamini.y@massiltech.com</toEmail>
+            <ccEmail>yamini.y@massiltech.com</ccEmail>
+            <Attachment>D:/FolderY/1A-MySPL-PROJECTS/AD-150/TestPDF/Output.pdf</Attachment>
+            <!-- <WorkingDirectory>D:</WorkingDirectory> -->
+            <FileReadPath>/FolderY/1A-MySPL-PROJECTS/AD-150/TestPDF/Input/Input.pdf</FileReadPath>
+            <FileWritePath>/FolderY/1A-MySPL-PROJECTS/AD-150/TestPDF/Output.pdf</FileWritePath>
+            <SourcePath>/FolderY/1A-MySPL-PROJECTS/AD-150/TestPDF/Input/Input.txt</SourcePath>
+            <TargetPath>/FolderY/1A-MySPL-PROJECTS/AD-150/TestPDF/</TargetPath>
+        </Mail>
+    </MailDetails>
+</localEntry>

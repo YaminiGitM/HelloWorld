@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/enrich" name="EnrichAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST">
+        <inSequence>
+            <!-- Extract the first 10 characters of DateOfBirthGregorian -->
+            <property expression="json-eval($.CustomerDetails.DateOfBirthGregorian)" name="DateOfBirthGregorian" scope="default" type="STRING"/>
+            <property expression="fn:substring($ctx:DateOfBirthGregorian, 1, 10)" name="formattedDate" scope="default" type="STRING"/>
+            <!-- Replace the DateOfBirthGregorian in the payload -->
+            <filter regex="true" source="boolean($ctx:DateOfBirthGregorian) and boolean($ctx:DateOfBirthGregorian !='null')">
+                <then>
+                    <enrich>
+                        <source clone="true" property="formattedDate" type="property"/>
+                        <target xpath="json-eval($.CustomerDetails.DateOfBirthGregorian)"/>
+                    </enrich>
+                </then>
+                <else/>
+            </filter>
+            <property expression="json-eval($.AddressDetails)" name="addressDetails" scope="default" type="STRING"/>
+            <property expression="json-eval($.CustomerDetails)" name="customerDetails" scope="default" type="STRING"/>
+            <log level="custom">
+                <property expression="get-property('addressDetails')" name="payload-AddressDetails: "/>
+                <property expression="get-property('customerDetails')" name="payload-CustomerDetails: "/>
+            </log>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

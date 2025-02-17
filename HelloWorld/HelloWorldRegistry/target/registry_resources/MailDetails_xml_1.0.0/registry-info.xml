@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+    <item>
+        <file>MailDetails.xml</file>
+        <path>/_system/config/custom</path>
+        <mediaType>application/vnd.wso2.esb.localentry</mediaType>
+        <properties/>
+    </item>
+</resources>

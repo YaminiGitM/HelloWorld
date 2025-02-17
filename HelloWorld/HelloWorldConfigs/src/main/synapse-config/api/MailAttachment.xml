@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/mail" name="MailAttachment" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST GET">
+        <inSequence>
+            <log level="full" separator="Request"/>
+            <propertyGroup description="FilePath-Registry">
+                <property expression="get-property('registry','conf:/custom/MailDetails.xml')" name="MailData" scope="default" type="OM"/>
+                <property expression="$ctx:MailData//Mail/SourcePath" name="SourcePath" scope="default" type="STRING"/>
+                <property expression="$ctx:MailData//Mail/TargetPath" name="TargetPath" scope="default" type="STRING"/>
+                <property expression="$ctx:MailData//Mail/FileReadPath" name="FileReadPath" scope="default" type="STRING"/>
+                <property expression="$ctx:MailData//Mail/FileWritePath" name="FileWritePath" scope="default" type="STRING"/>
+            </propertyGroup>
+            <file.read configKey="FILE_CONNECTION_1">
+                <path>{$ctx:FileReadPath}</path>
+                <includeResultTo>Message Body</includeResultTo>
+            </file.read>
+            <property expression="$body//ns:binary/text()" name="EncodedFileContent" scope="default" type="STRING" xmlns:ns="http://ws.apache.org/commons/ns/payload"/>
+            <property expression="fn:base64Decode($ctx:EncodedFileContent)" name="DecodedFileContent" scope="default" type="STRING"/>
+            <log level="custom" separator="After FileRead">
+                <property name="Msg" value="After FileRead"/>
+                <property expression="$ctx:EncodedFileContent" name="EncodedFileContentProp"/>
+                <property expression="$ctx:DecodedFileContent" name="DecodedFileContentProp"/>
+            </log>
+            <file.write configKey="FILE_CONNECTION_1">
+                <filePath>{$ctx:FileWritePath}</filePath>
+                <contentOrExpression>{$ctx:DecodedFileContent}</contentOrExpression>
+                <mimeType>application/binary</mimeType>
+                <compress>false</compress>
+                <writeMode>Overwrite</writeMode>
+                <enableStreaming>false</enableStreaming>
+                <appendNewLine>false</appendNewLine>
+                <enableLock>false</enableLock>
+                <includeResultTo>Message Body</includeResultTo>
+                <updateLastModified>true</updateLastModified>
+            </file.write>
+            <log level="custom" separator="After FileWrite">
+                <property name="Msg" value="After FileWrite"/>
+            </log>
+            <file.copy configKey="FILE_CONNECTION_1">
+                <sourcePath>{$ctx:SourcePath}</sourcePath>
+                <targetPath>{$ctx:TargetPath}</targetPath>
+                <includeParent>false</includeParent>
+                <overwrite>true</overwrite>
+                <renameTo>Output.txt</renameTo>
+            </file.copy>
+            <log level="full" separator="After FileCopy"/>
+            <!-- <propertyGroup description="MailData-Registry">
+                <property expression="$ctx:MailData//Mail/fromEmail" name="fromEmail" scope="default" type="STRING"/>
+                <property expression="$ctx:MailData//Mail/toEmail" name="toEmail" scope="default" type="STRING"/>
+                <property expression="$ctx:MailData//Mail/ccEmail" name="ccEmail" scope="default" type="STRING"/>
+                <property expression="$ctx:MailData//Mail/subject" name="subject" scope="default" type="STRING"/>
+                <property expression="$ctx:MailData//Mail/Attachment" name="Attachment" scope="default" type="STRING"/>
+            </propertyGroup>
+            <email.send configKey="EMAIL_CONNECTION_2">
+                <from>{$ctx:fromEmail}</from>
+                <to>{$ctx:toEmail}</to>
+                <cc>{$ctx:ccEmail}</cc>
+                <bcc>{$ctx:bccEmail}</bcc>
+                <subject>{$ctx:subject}</subject>
+                <content>Please find attachment</content>
+                <attachments>{$ctx:Attachment}</attachments>
+            </email.send>
+            <log level="full" separator="After EmailSend"/> -->
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

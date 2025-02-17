@@ -1,0 +1,11 @@
+---
+key: "MailAttachment-1.0.0"
+name : "MailAttachment"
+displayName : "MailAttachment"
+description: "Sample API"
+version: "1.0.0"
+serviceUrl: "https://{MI_HOST}:{MI_PORT}/mail"
+definitionType: "OAS3"
+securityType: "BASIC"
+mutualSSLEnabled: false
+apiId : "null"

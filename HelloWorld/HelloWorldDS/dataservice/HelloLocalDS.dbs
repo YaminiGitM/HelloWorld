@@ -1,0 +1,38 @@
+<data transports="http https" serviceGroup="" serviceNamespace="" name="HelloLocalDS">
+  <description />
+  <config id="HelloDS">
+    <property name="driverClassName">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+    <property name="url">jdbc:sqlserver://DESKTOP-EPFCO9N\SQLEXPRESS:1433;databaseName=MassilDB</property>
+    <property name="username">Massil</property>
+    <property name="password">Massil@123</property>
+  </config>
+  <operation name="insertAdditionalCustomerDetailOP" returnRequestStatus="true">
+    <call-query href="insertAdditionalCustomerDetail">
+      <with-param name="ApplicantId" query-param="ApplicantId" />
+      <with-param name="Id" query-param="Id" />
+    </call-query>
+  </operation>
+  <operation name="selectAdditionalCustomerDetailOP">
+    <call-query href="selectAdditionalCustomerDetail">
+      <with-param name="Id" query-param="Id" />
+    </call-query>
+  </operation>
+  <query useConfig="HelloDS" id="insertAdditionalCustomerDetail">
+    <sql>INSERT INTO [dbo].[AdditionalCustomerDetail]
+			(ApplicantId, Id)
+			VALUES(:ApplicantId, :Id);
+		</sql>
+    <param type="IN" name="ApplicantId" paramType="SCALAR" sqlType="BIGINT" optional="false" />
+    <param type="IN" name="Id" paramType="SCALAR" sqlType="INTEGER" optional="false" />
+  </query>
+  <query useConfig="HelloDS" id="selectAdditionalCustomerDetail">
+    <sql>SELECT ApplicantId, Id
+			FROM [dbo].[AdditionalCustomerDetail] WHERE Id =:Id
+		</sql>
+    <param type="IN" name="Id" paramType="SCALAR" sqlType="INTEGER" optional="false" />
+    <result rowName="AdditionalCustomerDetail" element="AdditionalCustomerDetails">
+      <element name="ApplicantId" column="ApplicantId" xsdType="integer" requiredRoles="" />
+      <element name="Id" column="Id" xsdType="integer" requiredRoles="" />
+    </result>
+  </query>
+</data>

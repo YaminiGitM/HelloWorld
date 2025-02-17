@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="MailDetails_xml" groupId="com.example.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseIntegrator">
+        <item>
+            <file>MailDetails.xml</file>
+            <path>/_system/config/custom</path>
+            <mediaType>application/vnd.wso2.esb.localentry</mediaType>
+            <properties/>
+        </item>
+    </artifact>
+</artifacts>

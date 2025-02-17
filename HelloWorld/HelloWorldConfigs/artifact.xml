@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="HelloWorld" groupId="wso2.sampleHelloWorld.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/HelloWorld.xml</file>
+    </artifact>
+    <artifact name="HelloWorld_swagger" groupId="wso2.sampleHelloWorld.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/HelloWorld_swagger.yaml</file>
+    </artifact>
+    <artifact name="HelloWorld_metadata" groupId="wso2.sampleHelloWorld.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/HelloWorld_metadata.yaml</file>
+    </artifact>
+    <artifact name="EnrichAPI" groupId="wso2.sampleHelloWorld.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/EnrichAPI.xml</file>
+    </artifact>
+    <artifact name="EnrichAPI_swagger" groupId="wso2.sampleHelloWorld.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/EnrichAPI_swagger.yaml</file>
+    </artifact>
+    <artifact name="EnrichAPI_metadata" groupId="wso2.sampleHelloWorld.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/EnrichAPI_metadata.yaml</file>
+    </artifact>
+    <artifact name="MailAttachment" groupId="wso2.sampleHelloWorld.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/MailAttachment.xml</file>
+    </artifact>
+    <artifact name="MailAttachment_swagger" groupId="wso2.sampleHelloWorld.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/MailAttachment_swagger.yaml</file>
+    </artifact>
+    <artifact name="MailAttachment_metadata" groupId="wso2.sampleHelloWorld.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/MailAttachment_metadata.yaml</file>
+    </artifact>
+    <artifact name="EMAIL_CONNECTION_1" groupId="wso2.sampleHelloWorld.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\EMAIL_CONNECTION_1.xml</file>
+    </artifact>
+    <artifact name="FILE_CONNECTION_1" groupId="wso2.sampleHelloWorld.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\FILE_CONNECTION_1.xml</file>
+    </artifact>
+    <artifact name="EMAIL_CONNECTION_2" groupId="wso2.sampleHelloWorld.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\EMAIL_CONNECTION_2.xml</file>
+    </artifact>
+    <artifact name="FILE_CONNECTION_1" groupId="wso2.sampleHelloWorld.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\FILE_CONNECTION_1.xml</file>
+    </artifact>
+</artifacts>
